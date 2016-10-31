@@ -136,12 +136,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/gigaai/framework.git",
-                "reference": "ce0ac0d48320f9109b51014ffaad8632ce243fa2"
+                "reference": "52041414dc74e9714013435ff67215c429aa9177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gigaai/framework/zipball/ce0ac0d48320f9109b51014ffaad8632ce243fa2",
-                "reference": "ce0ac0d48320f9109b51014ffaad8632ce243fa2",
+                "url": "https://api.github.com/repos/gigaai/framework/zipball/52041414dc74e9714013435ff67215c429aa9177",
+                "reference": "52041414dc74e9714013435ff67215c429aa9177",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 "php",
                 "wordpress"
             ],
-            "time": "2016-10-24 19:26:23"
+            "time": "2016-10-30 19:51:27"
         },
         {
             "name": "illuminate/container",
@@ -694,16 +694,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "93013a18d272e59dab8e67f583155b78c68947eb"
+                "reference": "ff1285087397d2f64041b35e591f3025881c90cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/93013a18d272e59dab8e67f583155b78c68947eb",
-                "reference": "93013a18d272e59dab8e67f583155b78c68947eb",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/ff1285087397d2f64041b35e591f3025881c90cd",
+                "reference": "ff1285087397d2f64041b35e591f3025881c90cd",
                 "shasum": ""
             },
             "require": {
@@ -754,20 +754,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-06 11:02:40"
+            "time": "2016-10-18 04:30:12"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v2.8.12",
+            "version": "v2.8.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "08761341cc4a3b2d9d9578364f7c655b178254aa"
+                "reference": "7163ee02a726fdec849a37182f7ffc32389b76a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/08761341cc4a3b2d9d9578364f7c655b178254aa",
-                "reference": "08761341cc4a3b2d9d9578364f7c655b178254aa",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/7163ee02a726fdec849a37182f7ffc32389b76a8",
+                "reference": "7163ee02a726fdec849a37182f7ffc32389b76a8",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2016-09-29 14:06:15"
+            "time": "2016-10-18 15:06:24"
         }
     ],
     "packages-dev": [],

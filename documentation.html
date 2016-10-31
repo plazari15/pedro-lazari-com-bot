@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giga AI Messenger Bot Documentation</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <meta name="description" content="Rapid Facebook Messenger Bots for Developers &amp; Marketers">
+    <meta name="author" content="Gary Lamb">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://giga.ai/css/bootstrap.offcanvas.css"/>
+    <link rel="stylesheet" href="https://giga.ai/css/app.css">
+
+    <style type="text/css">
+        #main .container{
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            width: 900px;
+            margin: auto;
+        }
+
+        #content{
+            border-left: 0
+        }
+    </style>
+</head>
+
+<body class="docs language-php">
+
+
+<div id="main" class="main">
+    <div class="container">
+        <div class="row">
+
+            <article id="content" class="col-md-12">
+
+                <h1>Giga AI Messenger Bot Documentation</h1>
+
+                <dl>
+                    <dt>Author</dt>
+                    <dd>Binaty &lt;hello@binaty.org&gt;</dd>
+
+                    <dt>Version</dt>
+                    <dd>2.0.1</dd>
+                </dl>
+
+                <p>
+                    <em>Thanks for purchasing Giga Messenger Bot (previously called Facebook Messenger Bots for PHP). This is a quick start guide which shows you the easiest way to setup your messenger bot and make it works. For detailed, daily updated version, please go to <a href="https://giga.ai/docs/standalone">Live Documentation</a>
+                    </em>
+                </p>
+
+                <p>
+                    <em>If you have any questions that are beyond the scope of this help file, please feel free to ask us on <a href="https://giga.ai">Official Support Channel</a>. <br>
+                        Thanks so much!
+                    </em>
+                </p>
+
+                <hr>
+
+                <section id="installation">
+                    <h2>Installation</h2>
+                    <blockquote>
+                        It's recommended that you read <a href="https://developers.facebook.com/docs/messenger-platform/product-overview">Messenger Platform's Overview</a> before continue reading this documentation.
+                    </blockquote>
+                    <h3>Server Requirements</h3>
+                    <p>In order to run Giga Messenger Bot (GigaAI), your server should meet these minimum requirements:</p>
+                    <ul>
+                        <li>PHP 5.4+</li>
+                        <li>MySQL 5.6+</li>
+                        <li><code>cURL</code> should enabled</li>
+                        <li>Your site (or webhook) should <code>https</code></li>
+                    </ul>
+                    <p>Most of server/hosting providers is already support PHP 5.4+ and cURL. You can also get a free SSL from <a href="https://letsencrypt.org">LetsEncrypt</a>. </p>
+                    <p>Of course, it's highly recommended that you run latest stable PHP version.</p>
+                    <h3>Installing Giga Messenger Bot</h3>
+                    <ul>
+                        <li>Download <code>giga-messenger-bot.zip</code> and unzip the package.</li>
+                        <li>Copy <code>giga-messenger-bot</code> directory to your web server.</li>
+                        <li>Your webhook now is the path to <code>/public/</code> URL. For example: <code>https://domain.com/giga-messenger-bot/public/</code>.</li>
+                    </ul>
+                    <blockquote>
+                        <p>Of course, you can rename <code>giga-messenger-bot</code> to whatever you want. Or point your domain to <code>/public/</code> URL for security purpose. All is well.</p>
+                    </blockquote>
+                    <h3>Secure Tunnels to Localhost</h3>
+                    <p>Let's assume that you want to test your bots in your development machine before deploying. 
+                        You'll need to let Facebook connect to your PC and it should have SSL enabled. 
+                        To simply these steps, we'd recommend that you use <a href="https://ngrok.com">ngrok</a>, 
+                        it will automatically create a secure public URL to your local webserver with format: 
+                        <code>https://RANDOM.ngrok.io</code>.
+                    </p>
+
+                    <h3>Upgrade Guide</h3>
+                    <p>This documentation is for new user only. If you are already familiar with Giga AI. Please go to <a href="https://giga.ai/docs/standalone">Standalone</a> guide.
+                </section>
+                <hr>
+
+                <section id="setup">
+                    <h2>Setup Your Database</h2>
+                    <ul>
+                        <li>Create your database</li>
+                        <li>Open <code>/vendor/gigaai/framework/schema/mysql.sql</code> and import to your database</li>
+                        <li>Open <code>/config.php</code>, in <code>mysql</code> section. Enter your database connection info then save file.</li>
+                    </ul>
+
+                    <h2>Setup Messenger</h2>
+                    <h3>Create Facebook App &amp; Page</h3>
+                    <p>Create a new <a href="https://developers.facebook.com/quickstarts/?platform=web">Facebook App</a> and <a href="https://www.facebook.com/pages/create">Page</a> or simply use existing ones. Go to the App Dashboard and under Product Settings click "Add Product" and select "Messenger."</p>
+                    <img src="https://scontent-hkg3-1.xx.fbcdn.net/t39.2178-6/12995587_195576307494663_824949235_n.png" alt="Setup Messenger">
+                    
+
+                    <h2>Setup Webhook</h2>
+                    <p>In your Facebook App. Navigate to Webhooks menu item, click <kbd>New Subscription</kbd>, then choose Page. A dialog will shows up:</p>
+                    <p><img src="https://giga.ai/images/page-subscription.png" alt="New Page Subscription" /></p>
+                    <ul>
+                        <li>In &quot;Callback URL&quot;, enter your webhook URL (default is <code>https://domain.com/giga-messenger-bot/public/</code>).</li>
+                        <li>In &quot;Verify Token&quot;, enter <code>GigaAI</code></li>
+                        <li>In &quot;Subscription Field&quot;, check all fields with prefix "message_", like: <code>message_deliveries</code>, <code>messages</code>, <code>messaging_optins</code>, <code>messaging_postbacks</code>, <code>message_echoes</code>, <code>message_reads</code>, and <code>messaging_account_linking</code>.</li>
+                        <li>Click <kbd>Verify and Save</kbd></li>
+                    </ul>
+
+                    <h2>Setup Messenger</h2>
+                    <p>The next step is make a connection between Website &lt;=&gt; App &lt;=&gt; Page, so all messages come from page pass through app to website and vice versa.</p>
+                    <ul>
+                        <li>In your Facebook App. Navigate Messenger, below Webhooks item.</li>
+                        <li>In <code>Token Generation</code> section, select a your page, you'll need to confirm permission for that page. After that step, you'll got Page Access Token.
+                            <img src="https://giga.ai/images/page-access-token.png" alt="Page Access Token" /></li>
+                        <li>Click to copy that token</li>
+                        <li>Open <code>giga-messenger-bot/config.php</code> and paste that copied text to <code>page_access_token</code> section.</li>
+                        <li>In <strong>Webhooks</strong> box, scroll down to <em>Select a page to subscribe your webhook to the page events</em>. Choose your page and click "Subscribe"</li>
+                        <li><em>(Optional)</em> Copy your page ID, paste it to <code>page_id</code> section.</li>
+                        <li>Save your <code>config.php</code></li>
+                    </ul>
+                    <p>Now, visit your subscribe URL (default is <code>https://domain.com/giga-messenger-bot/public?subscribe=true</code>). You should see this message:</p>
+                    <pre><code>
+object(stdClass)#6 (1) { ["success"]=> bool(true) }
+</code></pre>
+                    <blockquote>
+                        <p>Please remember that you can visit this subscribe URL anytime to check connection status.</p>
+                    </blockquote>
+                </section>
+
+                <section id="nodes">
+
+                    <h2>Your First Message</h2>
+                    <p>Now, it's time to seed your first message.</p>
+                    <ul>
+                        <li>In your browser, open your <code>https://domain.com/giga-messenger-bot/public/seeder.php</code>, this file contains all nodes which you define here</li>
+                        <li>If success, you'll receive "Nodes seeded" message.</li>
+                    </ul>
+
+                    <p>All done, now it's time to test your first message!</p>
+
+                    <p>Try to send <code>hi</code> to your page with your app's administrator account. If you get reply from your page. Congratulation! Otherwise, please check your server requirements or previous steps.</p>
+
+                    <p><img src="https://giga.ai/images/greeting.jpg" alt="Greeting" /></p>
+
+                    <h2>What's Next?</h2>
+
+                    <p>Now, setup is completed, you'll want to know about <a href="https://giga.ai/docs/standalone/message-types">Message Types</a> and how to use our <a href="https://giga.ai/docs/standalone/api">API</a> to send and receive message!</p>
+                    <p>After created your bot, you'll need to get an <a href="https://developers.facebook.com/docs/messenger-platform/app-review">approved review</a> from Facebook to public your Bot.</p>
+                    
+                    <strong>We're excited to see your bot. Please don't hesitate to tell us if you have any problem. And don't forget to go to <a href="https://giga.ai">GigaAI</a> regularly to get latest news &amp; tips.</strong>
+                </section>
+            </article>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><a href="https://giga.ai/contact">Contact</a></li>
+                        <li><a href="https://github.com/gigaai" title="Go to Github" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    </ul>
+
+                    <p>&copy; 2016 <a href="https://giga.ai">Giga AI</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="https://giga.ai/js/highlighter.js"></script>
+</body>
+</html>

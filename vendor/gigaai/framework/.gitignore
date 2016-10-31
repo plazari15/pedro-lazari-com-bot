@@ -1,0 +1,6 @@
+vendor
+.idea
+cache
+bootstrap
+public
+/config.php
